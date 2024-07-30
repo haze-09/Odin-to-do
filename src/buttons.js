@@ -1,4 +1,5 @@
 import {project,toDo} from "./proj&todo";
+import domBuilder from "./domBuilder";
 
 const buttonMagic = (function(){
 
@@ -8,6 +9,7 @@ const buttonMagic = (function(){
         })
         
         close.addEventListener('click',()=>{
+            console.log('meow');
             dialog.close();
         })     
 
@@ -26,7 +28,7 @@ const buttonMagic = (function(){
             const formData = new FormData(projectForm);
             let name = formData.get('projectName');
             project.create(name);
-            console.log(project.projects);
+            domBuilder.projectDOM();
             projectForm.reset();
             projectDialog.close();
         })

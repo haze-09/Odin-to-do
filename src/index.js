@@ -1,8 +1,10 @@
 import "./style.css";
-import {project,toDo} from "./proj&todo";
 import { buttonMagic } from "./buttons";
+import domBuilder from "./domBuilder";
 
 buttonMagic.batchFunnel();
+domBuilder.projectDOM();
+
 
 
 

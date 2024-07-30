@@ -77,7 +77,6 @@ body > div {
     column-gap: 20px;
     border-bottom: 1px solid ;
     padding: 20px;
-    position: relative;
 }
 
 .todo > :nth-child(3) {
@@ -118,6 +117,7 @@ input:checked{
 
 #myProj {
     margin-top: 50px;
+    overflow: hidden;
 }
 
 #myProj >div:nth-child(1){
@@ -141,7 +141,8 @@ input:checked{
     height: 50px;
 }
 #myProj >div:nth-child(2){
-    height: 37%;
+    flex: 1;
+    overflow-y: auto;
 }
 
 #myProj > div> button {

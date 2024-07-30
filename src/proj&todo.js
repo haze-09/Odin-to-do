@@ -1,5 +1,10 @@
 const project = (function(){
-    let projects = [];
+    let projects = [
+        {name:'click'},
+        {name:'the +'},
+        {name:'to add'},
+        {name:'projects'}
+    ];
 
     const create = (name)=>{
         let project = {name};
