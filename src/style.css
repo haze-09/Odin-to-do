@@ -155,3 +155,52 @@ input:checked{
     flex-direction: column;
     overflow-y: auto;
 }
+
+/* dialogs */
+dialog{
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+}
+dialog::backdrop{
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.close{
+    padding: 0px;
+    font-size: 20px;
+    width: 30.4px;
+}
+
+#project>form>div>label{
+    /* padding-bottom: 10px; */
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+
+
+}
+
+#project>form>div:nth-child(1){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+
+form>div>input{
+    margin-right: 20px;
+    font-family: inherit;
+    outline: none;
+    color: inherit;
+    font-size: inherit;
+    border-style: none;
+    background: none;
+    border-bottom: 1px solid rgb(0, 0, 0) ;
+}

@@ -1,15 +1,12 @@
 import "./style.css";
 import {project,toDo} from "./proj&todo";
+import { buttonMagic } from "./buttons";
 
-project.create('grocery');
-project.create('workout');
-
-toDo.create('order shampoo','great','tuesday','critical','grocery');
-toDo.create('apple cider vinegar','wow','tuesday','critical','grocery');
+buttonMagic.batchFunnel();
 
 
 
-console.log(toDo.toDoList);
+
 
 // document.getElementById('dateForm').addEventListener('submit', function(event) {
 //     event.preventDefault(); // Prevents the form from submitting in the traditional way
