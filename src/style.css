@@ -12,12 +12,25 @@
 
 body {
     display: flex;
-    gap: 3vh;
     height: 100vh;
     padding: 5vh;
-    /* background: var(--blue);     */
+    overflow: hidden;
     background: rgb(64,11,165);
     background: radial-gradient(circle, rgba(64,11,165,1) 0%, rgba(161,137,255,1) 57%, rgba(100,147,211,1) 90%, rgba(159,194,255,1) 100%);
+}
+
+button {
+    border: none;
+    background: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: var(--blue);
 }
 
 /* main content */
@@ -33,12 +46,17 @@ body > div {
 
 #sidebar {
     flex: 1;
+    margin-right: 4vh;
 }
 
 #toDo {
-    flex: 5;
+    flex: 4;
 }
-
+#header{
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: row; */
+}
 #title {
     font-size: 30px;
     font-weight: 600;
@@ -58,13 +76,23 @@ body > div {
     row-gap: 10px;
     column-gap: 20px;
     border-bottom: 1px solid ;
-    /* border-radius: 15px; */
     padding: 20px;
     position: relative;
 }
 
 .todo > :nth-child(3) {
     grid-column: span 2;
+}
+
+.todo>div{
+    grid-column: span 2; 
+    display: flex;
+    justify-content: space-between;   
+}
+.todo>div>button{
+    font-size: 16px;
+    
+
 }
 
 .title {
@@ -80,37 +108,40 @@ input:checked{
 
 
 /* sidebar */
+
 #sidebar > div {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
+
 #myProj {
     margin-top: 50px;
-    height: 60%;
 }
 
-button {
-    border: none;
-    background: none;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 10px;
-    border-radius: 10px;
-    transition: 0.2s;
+#myProj >div:nth-child(1){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-button:hover {
-    background: var(--blue);
-}
-
-#myProj > p {
+#myProj >div:nth-child(1)> p{
     border-bottom: 1px solid;
     padding-bottom: 10px;
-    text-align: center;
-    font-size: 18px;
+    text-align: left;
+    font-size: 20px;
     font-weight: 600;
+}
+#myProj >div:nth-child(1)> button{
+    font-weight: 600;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+}
+#myProj >div:nth-child(2){
+    height: 37%;
 }
 
 #myProj > div> button {
