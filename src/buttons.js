@@ -34,8 +34,37 @@ const buttonMagic = (function(){
         })
     }
 
+    function taskFunnel() {
+        const taskDialogOpen = document.querySelector('#taskDialogOpen');
+        const taskDialog = document.querySelector("#task");
+        const taskClose = document.querySelector("#taskClose");
+        const taskForm = document.querySelector("#task>form");
+
+        attachlistener(taskDialogOpen, taskDialog, taskClose);
+
+        taskForm.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            const formData = new FormData(taskForm);
+            let name = formData.get('taskName');
+            let desc = formData.get('desc');
+            let dateInput = formData.get('date');
+            let date = new Date(dateInput);
+            let priority = formData.get('priority');
+            let project = formData.get('project');
+            toDo.create(name,desc,date,priority,project,false,false);
+            console.log(toDo.toDoList);
+            domBuilder.taskDOM();
+            // domBuilder.projectDOM();
+            taskForm.reset();
+            taskDialog.close();
+        })
+
+        
+    }
+
     const batchFunnel = () => {
         projectFunnel();
+        taskFunnel();
         
     }
 

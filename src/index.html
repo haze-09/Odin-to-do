@@ -41,15 +41,20 @@
     <div id="toDo">
         <div id="header">
             <p id="title">Today</p>
-            <button>Add Task +</button>
+            <button id="taskDialogOpen">Add Task +</button>
         </div>
         <div id="toDoList">
             <div class="todo">
                 <input type="checkbox" name="" id="">
-                <p class="title">to buy</p>
+                <div class="datentitle">
+                    <p class="title">to buy</p>
+                    <p>8/1/24</p>
+                </div>
                 <p class="desc">apple pineapple pizza</p>
                 <div>
                     <button>#groceries</button>
+                    <button>Notes+</button>
+                    <button>Checklist+</button>
                     <button>Delete</button>
                 </div>
 
@@ -86,6 +91,43 @@
                 <input type="text" name="projectName" required>
                 <button type="submit">add</button>
             </div>
+        </form>
+    </dialog>
+    <dialog id="task">
+        <form>
+            <div>
+                <p>Add a Task</p>
+                <button id="taskClose" class="close" type="button">×</button>
+            </div>
+            <div>
+                <label for="taskName">Name</label>
+                <input type="text" name="taskName" required>
+
+                <label for="desc">Description</label>
+                <input type="text" name="desc"> 
+
+                <label for="date">Due Date</label>
+                <input type="date" name="date" required>
+
+                <label for="priority">Priority</label>
+                <select name="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                </select>
+
+                <label for="project">Project</label>
+                <select name="project">
+                    <option value="click">click</option>
+                    <option value="the +" selected>the +</option>
+                    <option value="to add">to add</option>
+                    <option value="projects">projects</option>
+                </select>
+
+                <button type="submit">add</button>
+            </div>
+            
+
         </form>
     </dialog>
 </body>

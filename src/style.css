@@ -83,7 +83,7 @@ body > div {
     grid-column: span 2;
 }
 
-.todo>div{
+.todo>:nth-child(4){
     grid-column: span 2; 
     display: flex;
     justify-content: space-between;   
@@ -103,6 +103,12 @@ input:checked{
     appearance: revert;
     accent-color: var(--blue);
 
+}
+
+.datentitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -177,23 +183,12 @@ dialog::backdrop{
     width: 30.4px;
 }
 
-#project>form>div>label{
-    /* padding-bottom: 10px; */
-    text-align: left;
-    font-size: 20px;
-    font-weight: 600;
-
-
-}
-
-#project>form>div:nth-child(1){
+dialog>form>div:nth-child(1){
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
 }
-
-
 
 form>div>input{
     margin-right: 20px;
@@ -205,3 +200,33 @@ form>div>input{
     background: none;
     border-bottom: 1px solid rgb(0, 0, 0) ;
 }
+label{
+    /* margin-top: 20px;
+    font-size: 20px; */
+    font-weight: 600;
+
+
+}
+
+#project>form>div>label{
+    text-align: left;    
+}
+
+#task>form>div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#task>form>div:nth-child(2)>select{
+    margin-top: 8px;
+}
+#task>form>div:nth-child(2)>input{
+    margin-right: 0;
+}
+#task>form>div:nth-child(2)>button{
+    margin-top: 30px;
+}
+/* #task>form>div:nth-child(2)>label:nth-child(3){
+    margin-top: 20px;
+
+} */

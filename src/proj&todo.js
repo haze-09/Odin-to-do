@@ -32,9 +32,9 @@ const toDo = (function(){
     let id=0;
     let toDoList =[]
 
-    const create = (title,desc,dueDate,priority,project)=>{
+    const create = (title,desc,dueDate,priority,project,notes,checkList)=>{
 
-        let toDo = {title,desc,dueDate,priority,project,id};
+        let toDo = {title,desc,dueDate,priority,project,notes,checkList,id};
         toDoList.push(toDo);
         id++;         
     }
