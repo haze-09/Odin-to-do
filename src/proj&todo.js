@@ -32,16 +32,19 @@ const toDo = (function(){
     let id=0;
     let toDoList =[]
 
-    const create = (title,desc,dueDate,priority,project,notes,checkList)=>{
+    const create = (title,desc,dueDate,priority,project,notes,checkList,checked,missed)=>{
 
-        let toDo = {title,desc,dueDate,priority,project,notes,checkList,id};
+        let toDo = {title,desc,dueDate,priority,project,notes,checkList,checked,missed,id};
         toDoList.push(toDo);
         id++;         
     }
 
-    const remove = (id,value)=>{
-        let index = array.findIndex(obj => obj[id] === value);
-        toDo.splice(index, 1);
+    const remove = (value)=>{
+        let index = toDoList.findIndex(obj => obj.id === parseInt(value));
+        console.log(index);
+        if (index !== -1) {
+            toDoList.splice(index, 1);
+        }
     }
 
     return{

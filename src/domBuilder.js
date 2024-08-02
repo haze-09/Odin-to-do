@@ -15,6 +15,23 @@ const domBuilder = (function(){
             projectContainer.appendChild(projectDomElement);
         }
     }
+
+    function priority(priority,element){
+        switch (priority) {
+            case 'low':
+                element.classList.add('low');                
+                break;
+            case 'medium':
+                element.classList.add('medium');
+                break;
+            case 'high':
+                element.classList.add('high');
+                break;        
+            default:
+                break;
+        }
+    }
+
     const taskDOM = () =>{
         let tasks = toDo.toDoList;
         const toDoList = document.querySelector('#toDoList');
@@ -35,10 +52,19 @@ const domBuilder = (function(){
             datentitle.classList.add('datentitle');
             todoContainer.appendChild(datentitle);
 
+            const priorityContainer = document.createElement('div');
+            datentitle.appendChild(priorityContainer);
+
             const title = document.createElement('p');
             title.classList.add('title');
             title.textContent = task.title;
-            datentitle.appendChild(title);
+            priorityContainer.appendChild(title);
+
+            const priorityDiv = document.createElement('div');
+            priorityDiv.classList.add('priority');
+            priority(task.priority,priorityDiv);
+            priorityContainer.appendChild(priorityDiv);
+
 
             const date = document.createElement('p');
             date.textContent = format(task.dueDate,'MM/dd/yy');
@@ -54,7 +80,7 @@ const domBuilder = (function(){
 
             const projectButton = document.createElement('button');
             projectButton.value = task.id;
-            projectButton.textContent=task.project;
+            projectButton.textContent='#'+task.project;
             buttonContainer.appendChild(projectButton);
 
             const notesButton = document.createElement('button');
@@ -70,7 +96,13 @@ const domBuilder = (function(){
             const deleteButton = document.createElement('button');
             deleteButton.value = task.id;
             deleteButton.textContent='Delete';
-            buttonContainer.appendChild(deleteButton);          
+            buttonContainer.appendChild(deleteButton);
+            deleteButton.addEventListener('click',(event)=>{
+                toDo.remove(event.target.value);
+                console.log(event.target.value);
+                console.log(tasks);
+                taskDOM();
+            });          
         }
         
     }
