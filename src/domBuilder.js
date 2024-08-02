@@ -1,4 +1,6 @@
 import {project,toDo} from "./proj&todo";
+import { buttonMagic } from "./buttons";
+import filter from "./filters";
 import {format} from 'date-fns';
 
 const domBuilder = (function(){
@@ -32,8 +34,11 @@ const domBuilder = (function(){
         }
     }
 
-    const taskDOM = () =>{
-        let tasks = toDo.toDoList;
+    const taskDOM = (tasks) =>{
+        // console.log(tasks);
+        let page = buttonMagic.page;
+        
+        // let tasks = toDo.toDoList;
         const toDoList = document.querySelector('#toDoList');
 
         toDoList.innerHTML="";
@@ -101,10 +106,31 @@ const domBuilder = (function(){
                 toDo.remove(event.target.value);
                 console.log(event.target.value);
                 console.log(tasks);
-                taskDOM();
+                // taskDOM(tasks);
+                taskDOMPageSwitcher(page);
             });          
         }
         
+    }
+    const taskDOMPageSwitcher = (page)=>{
+        switch (page) {
+            case 'today':
+                taskDOM(filter.today(toDo.toDoList));                    
+                break;
+            case 'upcoming':
+                taskDOM(filter.upcoming(toDo.toDoList));
+                break;
+            case 'missed':
+                taskDOM(filter.missed(toDo.toDoList));
+                break;
+            case 'cleared':
+                taskDOM(filter.cleared(toDo.toDoList));
+                break;
+        
+            default:
+                break;
+        }
+
     }
     const taskDialogProjects = ()=>{
         const select = document.querySelector('select[name="project"]');
@@ -120,7 +146,7 @@ const domBuilder = (function(){
         }
 
     }
-    return{projectDOM,taskDOM,taskDialogProjects}   
+    return{projectDOM,taskDOM,taskDialogProjects,taskDOMPageSwitcher}   
 
 })();
 

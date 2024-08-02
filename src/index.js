@@ -1,10 +1,18 @@
 import "./style.css";
 import { buttonMagic } from "./buttons";
 import domBuilder from "./domBuilder";
+import {project,toDo} from "./proj&todo";
+import filter from "./filters";
+
 
 buttonMagic.batchFunnel();
+buttonMagic.pageSwitcher();
 domBuilder.projectDOM();
+console.log(filter.today(toDo.toDoList));
+
+domBuilder.taskDOM(filter.today(toDo.toDoList));
 domBuilder.taskDialogProjects();
+
 
 
 
