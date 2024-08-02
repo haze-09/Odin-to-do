@@ -4,6 +4,7 @@ import domBuilder from "./domBuilder";
 
 buttonMagic.batchFunnel();
 domBuilder.projectDOM();
+domBuilder.taskDialogProjects();
 
 
 

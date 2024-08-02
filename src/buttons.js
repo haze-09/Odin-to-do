@@ -29,6 +29,7 @@ const buttonMagic = (function(){
             let name = formData.get('projectName');
             project.create(name);
             domBuilder.projectDOM();
+            domBuilder.taskDialogProjects();
             projectForm.reset();
             projectDialog.close();
         })

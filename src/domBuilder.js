@@ -106,7 +106,21 @@ const domBuilder = (function(){
         }
         
     }
-    return{projectDOM,taskDOM}   
+    const taskDialogProjects = ()=>{
+        const select = document.querySelector('select[name="project"]');
+        let projects = project.projects;
+
+        select.innerHTML='';
+
+        for(let obj of projects){
+            const option = document.createElement('option');
+            option.value = obj.name;
+            option.textContent ='#'+obj.name;
+            select.appendChild(option);
+        }
+
+    }
+    return{projectDOM,taskDOM,taskDialogProjects}   
 
 })();
 
