@@ -13,9 +13,39 @@ const domBuilder = (function(){
 
         for(let obj of projects){
             let projectDomElement = document.createElement('button');
-            projectDomElement.textContent = '#'+obj.name;
+            projectDomElement.textContent = obj.name;
+            projectDomElement.addEventListener('click',(event)=>{
+                // taskDOM(filter.project(event.target.textContent));
+                projectPageDOM(event.target.textContent);
+            })
             projectContainer.appendChild(projectDomElement);
+            
         }
+    }
+
+    const deleteRemover = ()=>{
+        const oldDelete = document.querySelector('#deleteProj');
+        if(oldDelete){
+            oldDelete.remove();
+        }
+    }
+
+    const projectPageDOM = (text)=>{
+        let title = document.querySelector('#title');
+        title.textContent = text;
+        title.value = 'project';
+        deleteRemover();
+        let Delete = document.createElement('button');
+        Delete.textContent = 'Delete Project';
+        Delete.id = 'deleteProj';
+        Delete.addEventListener('click',()=>{
+
+        })
+        let brother = document.querySelector('#taskDialogOpen');
+        brother.insertAdjacentElement('afterend',Delete);
+
+        
+        taskDOM(filter.project(text));    
     }
 
     function priority(priority,element){
@@ -85,7 +115,7 @@ const domBuilder = (function(){
 
             const projectButton = document.createElement('button');
             projectButton.value = task.id;
-            projectButton.textContent='#'+task.project;
+            projectButton.textContent=task.project;
             buttonContainer.appendChild(projectButton);
 
             const notesButton = document.createElement('button');
@@ -115,16 +145,18 @@ const domBuilder = (function(){
     const taskDOMPageSwitcher = (page)=>{
         switch (page) {
             case 'today':
-                taskDOM(filter.today(toDo.toDoList));                    
+                taskDOM(filter.today());                    
                 break;
             case 'upcoming':
-                taskDOM(filter.upcoming(toDo.toDoList));
+                taskDOM(filter.upcoming());
                 break;
             case 'missed':
-                taskDOM(filter.missed(toDo.toDoList));
+                console.log(filter.missed());
+                
+                taskDOM(filter.missed());
                 break;
             case 'cleared':
-                taskDOM(filter.cleared(toDo.toDoList));
+                taskDOM(filter.cleared());
                 break;
         
             default:
@@ -141,12 +173,12 @@ const domBuilder = (function(){
         for(let obj of projects){
             const option = document.createElement('option');
             option.value = obj.name;
-            option.textContent ='#'+obj.name;
+            option.textContent = obj.name;
             select.appendChild(option);
         }
 
     }
-    return{projectDOM,taskDOM,taskDialogProjects,taskDOMPageSwitcher}   
+    return{projectDOM,taskDOM,taskDialogProjects,taskDOMPageSwitcher,deleteRemover,projectPageDOM}   
 
 })();
 

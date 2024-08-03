@@ -1,51 +1,22 @@
 import {toDo} from "./proj&todo";
-import { isToday, isFuture, isPast } from "date-fns";
+import { isToday, isFuture, isPast, startOfDay } from "date-fns";
 
 const filter = (function(){
     let toDoList = toDo.toDoList;
 
-    const today = ()=>{
-        let today = [];
-        for(let toDo of toDoList){
-            if(isToday(toDo.dueDate)){
-                today.push(toDo);
-            }
-        }
-        return today;        
-    }
+    const today = () => toDoList.filter(toDo => isToday(toDo.dueDate));
 
-    const upcoming = ()=>{
-        let upcoming = [];
-        for(let toDo of toDoList){
-            if(isFuture(toDo.dueDate)){
-                upcoming.push(toDo);
-            }
-        }
-        return upcoming;
-    }
+    const upcoming = () => toDoList.filter(toDo => isFuture(toDo.dueDate));
 
-    const missed = ()=>{
-        let missed = [];
-        for(let toDo of toDoList){
-            if(isPast(toDo.dueDate) && toDo.checked === false){
-                missed.push(toDo);
-            }
-        }
-        return missed;    
-    }
+    const missed = () => toDoList.filter(toDo => 
+        isPast(startOfDay(toDo.dueDate)) && !isToday(toDo.dueDate) && !toDo.checked
+    );
 
-    const cleared = ()=>{
-        let cleared = [];
-        for(let toDo of toDoList){
-            if(toDo.checked === true){
-                cleared.push(toDo);
-            }
-        }
-        return cleared;
+    const cleared = () => toDoList.filter(toDo => toDo.checked);
 
-    }
+    const project = (project) => toDoList.filter(toDo => toDo.project === project);
 
-    return {today,upcoming,missed,cleared};
+    return {today,upcoming,missed,cleared,project};
 })();
 
 export default filter;

@@ -1,5 +1,6 @@
 import {project,toDo} from "./proj&todo";
 import domBuilder from "./domBuilder";
+import filter from "./filters";
 
 const buttonMagic = (function(){
     let page = 'today';
@@ -27,7 +28,7 @@ const buttonMagic = (function(){
         projectForm.addEventListener('submit',(e)=>{
             e.preventDefault();
             const formData = new FormData(projectForm);
-            let name = formData.get('projectName');
+            let name = '#'+formData.get('projectName');
             project.create(name);
             domBuilder.projectDOM();
             domBuilder.taskDialogProjects();
@@ -42,6 +43,8 @@ const buttonMagic = (function(){
         const taskClose = document.querySelector("#taskClose");
         const taskForm = document.querySelector("#task>form");
 
+        let title = document.querySelector('#title');
+
         attachlistener(taskDialogOpen, taskDialog, taskClose);
 
         taskForm.addEventListener('submit',(e)=>{
@@ -55,7 +58,15 @@ const buttonMagic = (function(){
             let project = formData.get('project');
             toDo.create(name,desc,date,priority,project,false,false,false,false);
             console.log(toDo.toDoList);
-            domBuilder.taskDOMPageSwitcher(page);            
+            if(title.value === 'project'){
+                domBuilder.taskDOM(filter.project(title.textContent));
+            }
+            else{
+                console.log('hi');                
+                domBuilder.taskDOMPageSwitcher(page);     
+            }
+            // domBuilder.taskDOMPageSwitcher(page);
+                   
             
             // domBuilder.projectDOM();
             taskForm.reset();
@@ -74,21 +85,25 @@ const buttonMagic = (function(){
 
         today.addEventListener('click',()=>{
             title.textContent = 'Today';
+            domBuilder.deleteRemover();
             page = 'today';
             domBuilder.taskDOMPageSwitcher(page);
         })
         upcoming.addEventListener('click',()=>{
             title.textContent = 'Upcoming';
+            domBuilder.deleteRemover();
             page = 'upcoming';
             domBuilder.taskDOMPageSwitcher(page);
         })
         missed.addEventListener('click',()=>{
             title.textContent = 'Missed';
+            domBuilder.deleteRemover();
             page = 'missed';
             domBuilder.taskDOMPageSwitcher(page);
         })
         cleared.addEventListener('click',()=>{
             title.textContent = 'Cleared';
+            domBuilder.deleteRemover();
             page = 'cleared';
             domBuilder.taskDOMPageSwitcher(page);
         })

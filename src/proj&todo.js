@@ -1,9 +1,9 @@
 const project = (function(){
     let projects = [
-        {name:'click'},
-        {name:'the +'},
-        {name:'to add'},
-        {name:'projects'}
+        {name:'#click'},
+        {name:'#the +'},
+        {name:'#to add'},
+        {name:'#projects'}
     ];
 
     const create = (name)=>{
@@ -36,7 +36,7 @@ const toDo = (function(){
             desc: "Draft and submit the project proposal for the new client",
             dueDate: new Date(2024, 7, 15), // August 15, 2024
             priority: "high",
-            project: "Work",
+            project: "#the +",
             notes: "Include budget estimates",
             checkList: false,
             checked: false,
@@ -48,7 +48,7 @@ const toDo = (function(){
             desc: "Pick up items for the week",
             dueDate: new Date(), // Today's date
             priority: "medium",
-            project: "Personal",
+            project: "#the +",
             notes: "Don't forget milk",
             checkList: false,
             checked: false,
@@ -60,7 +60,7 @@ const toDo = (function(){
             desc: "30 minutes cardio, 30 minutes strength training",
             dueDate: new Date(2024, 7, 5), // August 5, 2024
             priority: "low",
-            project: "Health",
+            project: "#the +",
             notes: "Remember to bring water bottle",
             checkList: false,
             checked: false,
