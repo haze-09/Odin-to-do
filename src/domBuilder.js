@@ -2,6 +2,7 @@ import {project,toDo} from "./proj&todo";
 import { buttonMagic } from "./buttons";
 import filter from "./filters";
 import {format} from 'date-fns';
+import editIcon from './svgs/edit.svg'
 
 const domBuilder = (function(){
 
@@ -39,6 +40,11 @@ const domBuilder = (function(){
         Delete.textContent = 'Delete Project';
         Delete.id = 'deleteProj';
         Delete.addEventListener('click',()=>{
+            title.textContent = 'Today';
+            title.dataset.project = false;
+            domBuilder.deleteRemover();
+            buttonMagic.page = 'today';
+            taskDOMPageSwitcher(buttonMagic.page);
 
         })
         let brother = document.querySelector('#taskDialogOpen');
@@ -99,6 +105,11 @@ const domBuilder = (function(){
             priorityDiv.classList.add('priority');
             priority(task.priority,priorityDiv);
             priorityContainer.appendChild(priorityDiv);
+
+            const edit = document.createElement('img');
+            edit.classList.add('edit');
+            edit.src = editIcon;
+            priorityContainer.appendChild(edit);
 
 
             const date = document.createElement('p');

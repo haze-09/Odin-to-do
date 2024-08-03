@@ -131,6 +131,9 @@ const buttonMagic = (function(){
         pageSwitcher,
         get page(){
             return page;
+        },
+        set page(value){
+            page = value;
         }
     }
     
