@@ -33,7 +33,7 @@ const domBuilder = (function(){
     const projectPageDOM = (text)=>{
         let title = document.querySelector('#title');
         title.textContent = text;
-        title.value = 'project';
+        title.dataset.project = 'true';
         deleteRemover();
         let Delete = document.createElement('button');
         Delete.textContent = 'Delete Project';

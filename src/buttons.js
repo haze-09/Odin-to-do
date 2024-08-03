@@ -58,10 +58,16 @@ const buttonMagic = (function(){
             let project = formData.get('project');
             toDo.create(name,desc,date,priority,project,false,false,false,false);
             console.log(toDo.toDoList);
-            if(title.value === 'project'){
+            
+            
+            if(title.dataset.project === 'true'){
+                console.log(title.dataset.project);
+                console.log('bye');
+                console.log(filter.project(title.textContent));                
                 domBuilder.taskDOM(filter.project(title.textContent));
             }
             else{
+                console.log(title.dataset.project);
                 console.log('hi');                
                 domBuilder.taskDOMPageSwitcher(page);     
             }
@@ -85,24 +91,28 @@ const buttonMagic = (function(){
 
         today.addEventListener('click',()=>{
             title.textContent = 'Today';
+            title.dataset.project = false;
             domBuilder.deleteRemover();
             page = 'today';
             domBuilder.taskDOMPageSwitcher(page);
         })
         upcoming.addEventListener('click',()=>{
             title.textContent = 'Upcoming';
+            title.dataset.project = false;
             domBuilder.deleteRemover();
             page = 'upcoming';
             domBuilder.taskDOMPageSwitcher(page);
         })
         missed.addEventListener('click',()=>{
             title.textContent = 'Missed';
+            title.dataset.project = false;
             domBuilder.deleteRemover();
             page = 'missed';
             domBuilder.taskDOMPageSwitcher(page);
         })
         cleared.addEventListener('click',()=>{
             title.textContent = 'Cleared';
+            title.dataset.project = false;
             domBuilder.deleteRemover();
             page = 'cleared';
             domBuilder.taskDOMPageSwitcher(page);
