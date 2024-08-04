@@ -107,6 +107,7 @@ const buttonMagic = (function(){
             domBuilder.deleteRemover();
             page = 'today';
             domBuilder.taskDOMPageSwitcher(page);
+            console.log(toDo.toDoList);
         })
         upcoming.addEventListener('click',()=>{
             title.textContent = 'Upcoming';

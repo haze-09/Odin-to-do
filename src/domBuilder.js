@@ -42,6 +42,17 @@ const domBuilder = (function(){
         Delete.value = text;
         Delete.addEventListener('click',(event)=>{
             project.remove(event.target.value);
+            console.log(project.projects);
+            projectDOM();
+            taskDialogProjects();
+
+            toDo.removeProject(event.target.value);
+
+            console.log(toDo.toDoList);
+            
+
+
+            
 
             title.textContent = 'Today';
             title.dataset.project = false;
@@ -159,6 +170,8 @@ const domBuilder = (function(){
     const taskDOMPageSwitcher = (page)=>{
         switch (page) {
             case 'today':
+                console.log('taskDOMPageSwitcher');
+                
                 taskDOM(filter.today());                    
                 break;
             case 'upcoming':

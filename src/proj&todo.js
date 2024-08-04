@@ -103,19 +103,24 @@ const toDo = (function(){
         let toDo = {title,desc,dueDate,priority,project,notes,checkList,checked,missed,id};
         toDoList.push(toDo);
         id++;         
-    }
+    };
 
     const remove = (value)=>{
         let index = toDoList.findIndex(obj => obj.id === parseInt(value));
         console.log(index);
         if (index !== -1) {
             toDoList.splice(index, 1);
-        }
-    }
+        };
+    };
+
+    const removeProject = (name) =>{
+        toDoList = toDoList.filter(toDo => toDo.project !== name);
+    };
 
     return{
         create,
         remove,
+        removeProject,
         get toDoList(){
             return toDoList;
         }
