@@ -141,6 +141,9 @@ const domBuilder = (function(){
             const projectButton = document.createElement('button');
             projectButton.value = task.id;
             projectButton.textContent=task.project;
+            projectButton.addEventListener('click',(event)=>{
+                projectPageDOM(event.target.textContent);
+            })
             buttonContainer.appendChild(projectButton);
 
             const notesButton = document.createElement('button');
@@ -161,8 +164,15 @@ const domBuilder = (function(){
                 toDo.remove(event.target.value);
                 console.log(event.target.value);
                 console.log(tasks);
+                let title = document.querySelector('#title');
+                if(title.dataset.project === 'true'){
+                    taskDOM(filter.project(title.textContent));
+                }
+                else{
+                    taskDOMPageSwitcher(page);
+                }
                 // taskDOM(tasks);
-                taskDOMPageSwitcher(page);
+                
             });          
         }
         
