@@ -97,10 +97,26 @@ const domBuilder = (function(){
             const todoContainer = document.createElement('div');
             todoContainer.classList.add('todo');
             toDoList.appendChild(todoContainer);
+            
 
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.value = task.id;
+            if(task.checked === true){
+                checkbox.checked = true;
+                // checkbox.disabled = true;
+            }
+            checkbox.addEventListener('change',(event)=>{
+                toDo.checkbox(event.target.value);
+                let title = document.querySelector('#title');
+                if(title.dataset.project === 'true'){
+                    taskDOM(filter.project(title.textContent));
+                }
+                else{
+                    taskDOMPageSwitcher(page);
+                }
+
+            });
             todoContainer.appendChild(checkbox);
 
             const datentitle = document.createElement('div');
@@ -170,9 +186,7 @@ const domBuilder = (function(){
                 }
                 else{
                     taskDOMPageSwitcher(page);
-                }
-                // taskDOM(tasks);
-                
+                }                
             });          
         }
         

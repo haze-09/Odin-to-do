@@ -117,10 +117,17 @@ const toDo = (function(){
         toDoList = toDoList.filter(toDo => toDo.project !== name);
     };
 
+    const checkbox = (value) =>{
+        let index = toDoList.findIndex(obj => obj.id === parseInt(value));
+        toDoList[index].checked = !toDoList[index].checked;
+        console.log(toDoList[index]);       
+    };
+
     return{
         create,
         remove,
         removeProject,
+        checkbox,
         get toDoList(){
             return toDoList;
         }
