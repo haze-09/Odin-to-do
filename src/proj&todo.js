@@ -12,13 +12,18 @@ const project = (function(){
     }
 
     const remove = (value)=>{
-        let index = array.findIndex(obj => obj.name === value);
+        let index = projects.findIndex(obj => obj.name === value);
         projects.splice(index, 1);
+    }
+
+    const checkDuplicate = (name)=>{
+        return projects.some(project => project.name === name);
     }
 
     return{
         create,
         remove,
+        checkDuplicate,
 
         get projects(){
             return projects;

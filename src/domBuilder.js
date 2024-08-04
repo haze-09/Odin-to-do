@@ -39,7 +39,10 @@ const domBuilder = (function(){
         let Delete = document.createElement('button');
         Delete.textContent = 'Delete Project';
         Delete.id = 'deleteProj';
-        Delete.addEventListener('click',()=>{
+        Delete.value = text;
+        Delete.addEventListener('click',(event)=>{
+            project.remove(event.target.value);
+
             title.textContent = 'Today';
             title.dataset.project = false;
             domBuilder.deleteRemover();

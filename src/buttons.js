@@ -23,17 +23,29 @@ const buttonMagic = (function(){
         const projectClose = document.querySelector("#projectClose");
         const projectForm = document.querySelector("#project>form");
 
+        let error = document.createElement('p');
+        error.textContent = 'Project already exists!!';
+        error.classList.add('err');
+
         attachlistener(projectDialogOpen,projectDialog,projectClose);
 
         projectForm.addEventListener('submit',(e)=>{
             e.preventDefault();
             const formData = new FormData(projectForm);
             let name = '#'+formData.get('projectName');
-            project.create(name);
-            domBuilder.projectDOM();
-            domBuilder.taskDialogProjects();
-            projectForm.reset();
-            projectDialog.close();
+            if(project.checkDuplicate(name)){
+                projectForm.appendChild(error);              
+            }
+            else{
+                error.remove();
+                project.create(name);
+                domBuilder.projectDOM();
+                domBuilder.taskDialogProjects();
+                projectForm.reset();
+                projectDialog.close();
+
+            }
+            
         })
     }
 

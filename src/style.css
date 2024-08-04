@@ -135,6 +135,10 @@ background-color: #fffa5e;
 .high{
     background-color: #f87665;
 }
+
+.err{
+    color: #f87665;
+}
 .edit{
     padding: 10px;
     border-radius: 10px;
