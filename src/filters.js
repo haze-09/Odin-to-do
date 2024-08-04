@@ -2,7 +2,7 @@ import {toDo} from "./proj&todo";
 import { isToday, isFuture, isPast, startOfDay } from "date-fns";
 
 const filter = (function(){  
-    const today = () => toDo.toDoList.filter(toDo => isToday(toDo.dueDate));
+    const today = () => toDo.toDoList.filter(toDo => isToday(toDo.dueDate)  && !toDo.checked);
 
     const upcoming = () => toDo.toDoList.filter(toDo => isFuture(toDo.dueDate));
 
