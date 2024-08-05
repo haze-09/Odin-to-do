@@ -57,6 +57,8 @@ const buttonMagic = (function(){
 
         let title = document.querySelector('#title');
 
+        // domBuilder.taskDialogProjects();
+
         attachlistener(taskDialogOpen, taskDialog, taskClose);
 
         taskForm.addEventListener('submit',(e)=>{

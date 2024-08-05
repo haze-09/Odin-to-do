@@ -264,7 +264,19 @@ label{
 #task>form>div:nth-child(2)>button{
     margin-top: 30px;
 }
-/* #task>form>div:nth-child(2)>label:nth-child(3){
-    margin-top: 20px;
 
-} */
+
+#taskEdit>form>div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#taskEdit>form>div:nth-child(2)>select{
+    margin-top: 8px;
+}
+#taskEdit>form>div:nth-child(2)>input{
+    margin-right: 0;
+}
+#taskEdit>form>div:nth-child(2)>button{
+    margin-top: 30px;
+}

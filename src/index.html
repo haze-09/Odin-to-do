@@ -121,5 +121,39 @@
 
         </form>
     </dialog>
+
+    <dialog id="taskEdit">
+        <form>
+            <div>
+                <p>Edit Task</p>
+                <button id="taskEditClose" class="close" type="button">×</button>
+            </div>
+            <div>
+                <label for="taskName">Name</label>
+                <input type="text" name="taskName" required>
+
+                <label for="desc">Description</label>
+                <input type="text" name="desc"> 
+
+                <label for="date">Due Date</label>
+                <input type="date" name="date" required>
+
+                <label for="priority">Priority</label>
+                <select name="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                </select>
+
+                <label for="projectEdit">Project</label>
+                <select name="projectEdit">
+                </select>
+
+                <button type="submit">add</button>
+            </div>           
+
+        </form>
+    </dialog>
+
 </body>
 </html>

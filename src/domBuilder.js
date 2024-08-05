@@ -104,7 +104,6 @@ const domBuilder = (function(){
             checkbox.value = task.id;
             if(task.checked === true){
                 checkbox.checked = true;
-                // checkbox.disabled = true;
             }
             checkbox.addEventListener('change',(event)=>{
                 toDo.checkbox(event.target.value);
@@ -115,7 +114,6 @@ const domBuilder = (function(){
                 else{
                     taskDOMPageSwitcher(page);
                 }
-
             });
             todoContainer.appendChild(checkbox);
 
@@ -139,6 +137,26 @@ const domBuilder = (function(){
             const edit = document.createElement('img');
             edit.classList.add('edit');
             edit.src = editIcon;
+            edit.addEventListener('click',(event)=>{
+                const taskDialog = document.querySelector("#taskEdit");
+                const taskClose = document.querySelector("#taskEditClose");
+                const taskForm = document.querySelector("#taskEdit>form");
+
+                taskDialog.showModal();
+                taskClose.addEventListener('click',()=>{
+                    taskDialog.close();
+                })
+
+                taskDialogProjects();
+
+                taskForm.elements['taskName'].value = task.title;
+                taskForm.elements['desc'].value = task.desc;
+                
+                // Set date input value
+                taskForm.elements['date'].value =task.dueDate;
+                
+
+            })
             priorityContainer.appendChild(edit);
 
 
@@ -217,15 +235,24 @@ const domBuilder = (function(){
     }
     const taskDialogProjects = ()=>{
         const select = document.querySelector('select[name="project"]');
+        const editSelect = document.querySelector('select[name="projectEdit"]');
         let projects = project.projects;
+        console.log('hi');
+        
 
         select.innerHTML='';
+        editSelect.innerHTML = '';
 
         for(let obj of projects){
             const option = document.createElement('option');
             option.value = obj.name;
             option.textContent = obj.name;
             select.appendChild(option);
+
+            const editOption = document.createElement('option');
+            editOption.value = obj.name;
+            editOption.textContent = obj.name;            
+            editSelect.appendChild(editOption);
         }
 
     }
