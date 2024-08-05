@@ -100,6 +100,7 @@ const domBuilder = (function(){
             checkbox.value = task.id;
             if(task.checked === true){
                 checkbox.checked = true;
+                // checkbox.disabled = true;
             }
             checkbox.addEventListener('change',(event)=>{
                 toDo.checkbox(event.target.value);
@@ -110,6 +111,7 @@ const domBuilder = (function(){
                 else{
                     taskDOMPageSwitcher(page);
                 }
+
             });
             todoContainer.appendChild(checkbox);
 
