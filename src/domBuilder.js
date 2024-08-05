@@ -167,12 +167,14 @@ const domBuilder = (function(){
                     let documentTitle = document.querySelector('#title');
 
                     if(documentTitle.dataset.project === 'true'){
-                        taskDOM(filter.project(title.textContent));
+                        console.log('project');
+                        
+                        taskDOM(filter.project(documentTitle.textContent));
                     }
                     else{
                         taskDOMPageSwitcher(page);
                     }
-                    
+
                     taskDialog.close();         
 
                 })
