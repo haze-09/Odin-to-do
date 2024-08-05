@@ -48,11 +48,7 @@ const domBuilder = (function(){
 
             toDo.removeProject(event.target.value);
 
-            console.log(toDo.toDoList);
-            
-
-
-            
+            console.log(toDo.toDoList);         
 
             title.textContent = 'Today';
             title.dataset.project = false;
@@ -150,10 +146,37 @@ const domBuilder = (function(){
                 taskDialogProjects();
 
                 taskForm.elements['taskName'].value = task.title;
-                taskForm.elements['desc'].value = task.desc;
-                
-                // Set date input value
-                taskForm.elements['date'].value =task.dueDate;
+                taskForm.elements['desc'].value = task.desc;                
+                taskForm.elements['date'].value = format(task.dueDate,'yyyy-MM-dd');               
+                taskForm.elements['priority'].value = task.priority;
+                taskForm.elements['projectEdit'].value = task.project;
+
+                taskForm.addEventListener('submit',(e)=>{
+                    e.preventDefault();
+                    const formData = new FormData(taskForm);
+                    let title = formData.get('taskName');
+                    let desc = formData.get('desc');
+                    let dateInput = formData.get('date');
+                    let dueDate = new Date(dateInput);
+                    let priority = formData.get('priority');
+                    let project = formData.get('projectEdit');
+
+                    let updates = {title,desc,dueDate,priority,project};
+                    toDo.edit(updates,task.id);
+
+                    let documentTitle = document.querySelector('#title');
+
+                    if(documentTitle.dataset.project === 'true'){
+                        taskDOM(filter.project(title.textContent));
+                    }
+                    else{
+                        taskDOMPageSwitcher(page);
+                    }
+                    
+                    taskDialog.close();         
+
+                })
+
                 
 
             })

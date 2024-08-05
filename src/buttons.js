@@ -70,7 +70,7 @@ const buttonMagic = (function(){
             let date = new Date(dateInput);
             let priority = formData.get('priority');
             let project = formData.get('project');
-            toDo.create(name,desc,date,priority,project,false,false,false,false);
+            toDo.create(name,desc,date,priority,project,false,false,false);
             console.log(toDo.toDoList);
             
             

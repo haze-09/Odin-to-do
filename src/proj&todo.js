@@ -45,7 +45,6 @@ const toDo = (function(){
             notes: "Include budget estimates",
             checkList: false,
             checked: false,
-            missed: false,
             id: id++
         },
         {
@@ -57,7 +56,6 @@ const toDo = (function(){
             notes: "Don't forget milk",
             checkList: false,
             checked: false,
-            missed: false,
             id: id++
         },
         {
@@ -69,7 +67,6 @@ const toDo = (function(){
             notes: "Remember to bring water bottle",
             checkList: false,
             checked: false,
-            missed: false,
             id: id++
         },
         {
@@ -81,7 +78,6 @@ const toDo = (function(){
             notes: "Ask about her garden",
             checkList: false,
             checked: true,
-            missed: false,
             id: id++
         },
         {
@@ -93,17 +89,26 @@ const toDo = (function(){
             notes: "Include Q2 results",
             checkList: false,
             checked: false,
-            missed: false,
             id: id++
         }
     ]
 
-    const create = (title,desc,dueDate,priority,project,notes,checkList,checked,missed)=>{
+    const create = (title,desc,dueDate,priority,project,notes,checkList,checked)=>{
 
-        let toDo = {title,desc,dueDate,priority,project,notes,checkList,checked,missed,id};
+        let toDo = {title,desc,dueDate,priority,project,notes,checkList,checked,id};
         toDoList.push(toDo);
         id++;         
     };
+
+    const edit = (updates,id)=>{
+        let index = toDoList.findIndex(obj => obj.id === parseInt(id));
+        
+        toDoList[index] = {...toDoList[index], ...updates,
+                            notes: toDoList[index].notes, 
+                            checkList: toDoList[index].checkList,
+                            checked: toDoList[index].checked}
+
+    }
 
     const remove = (value)=>{
         let index = toDoList.findIndex(obj => obj.id === parseInt(value));
@@ -125,6 +130,7 @@ const toDo = (function(){
 
     return{
         create,
+        edit,
         remove,
         removeProject,
         checkbox,
