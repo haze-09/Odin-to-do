@@ -1,14 +1,14 @@
 const project = (function(){
-    let projects = [
-        {name:'#click'},
-        {name:'#the +'},
-        {name:'#to add'},
-        {name:'#projects'}
-    ];
+    let projects = JSON.parse(localStorage.getItem('projects'));
+
+    const saveProjects = ()=>{
+        localStorage.setItem('projects',JSON.stringify(projects));
+    }
 
     const create = (name)=>{
         let project = {name};
         projects.push(project);
+        saveProjects();
     }
 
     const remove = (value)=>{
@@ -34,70 +34,20 @@ const project = (function(){
 
 
 const toDo = (function(){
-    let id=0;
-    let toDoList =[
-        {
-            title: "Complete project proposal",
-            desc: "Draft and submit the project proposal for the new client",
-            dueDate: new Date(2024, 7, 15), // August 15, 2024
-            priority: "high",
-            project: "#the +",
-            notes: "Include budget estimates",
-            checkList: false,
-            checked: false,
-            id: id++
-        },
-        {
-            title: "Buy groceries",
-            desc: "Pick up items for the week",
-            dueDate: new Date(), // Today's date
-            priority: "medium",
-            project: "#the +",
-            notes: "Don't forget milk",
-            checkList: false,
-            checked: false,
-            id: id++
-        },
-        {
-            title: "Gym session",
-            desc: "30 minutes cardio, 30 minutes strength training",
-            dueDate: new Date(2024, 7, 5), // August 5, 2024
-            priority: "low",
-            project: "#the +",
-            notes: "Remember to bring water bottle",
-            checkList: false,
-            checked: false,
-            id: id++
-        },
-        {
-            title: "Call mom",
-            desc: "Weekly check-in call",
-            dueDate: new Date(2024, 7, 1), // August 1, 2024 (past date)
-            priority: "medium",
-            project: "Personal",
-            notes: "Ask about her garden",
-            checkList: false,
-            checked: true,
-            id: id++
-        },
-        {
-            title: "Prepare presentation",
-            desc: "Create slides for the team meeting",
-            dueDate: new Date(2024, 6, 10), // August 6, 2024
-            priority: "high",
-            project: "Work",
-            notes: "Include Q2 results",
-            checkList: false,
-            checked: false,
-            id: id++
-        }
-    ]
+    let id = JSON.parse(localStorage.getItem('id'));
+    let toDoList = JSON.parse(localStorage.getItem('toDoList'));
+
+    const saveToDoList = () => {
+        localStorage.setItem('toDoList', JSON.stringify(toDoList));
+        localStorage.setItem('id', id.toString());
+    };
 
     const create = (title,desc,dueDate,priority,project,notes,checkList,checked)=>{
 
         let toDo = {title,desc,dueDate,priority,project,notes,checkList,checked,id};
         toDoList.push(toDo);
-        id++;         
+        id++; 
+        saveToDoList();        
     };
 
     const edit = (updates,id)=>{
@@ -108,6 +58,8 @@ const toDo = (function(){
                             checkList: toDoList[index].checkList,
                             checked: toDoList[index].checked}
 
+        saveToDoList();
+
     }
 
     const remove = (value)=>{
@@ -116,16 +68,19 @@ const toDo = (function(){
         if (index !== -1) {
             toDoList.splice(index, 1);
         };
+        saveToDoList();
     };
 
     const removeProject = (name) =>{
         toDoList = toDoList.filter(toDo => toDo.project !== name);
+        saveToDoList();
     };
 
     const checkbox = (value) =>{
         let index = toDoList.findIndex(obj => obj.id === parseInt(value));
         toDoList[index].checked = !toDoList[index].checked;
-        console.log(toDoList[index]);       
+        console.log(toDoList[index]); 
+        saveToDoList();      
     };
 
     return{
