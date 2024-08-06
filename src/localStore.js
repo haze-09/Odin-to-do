@@ -13,8 +13,6 @@ const localStore = (function(){
             dueDate: new Date(), 
             priority: "high",
             project: "#projects",
-            notes: false,
-            checkList: false,
             checked: false,
             id: 0
         },
@@ -24,8 +22,6 @@ const localStore = (function(){
             dueDate: new Date(), 
             priority: "medium",
             project: "#projects",
-            notes: false,
-            checkList: false,
             checked: false,
             id: 1
         },
@@ -35,8 +31,6 @@ const localStore = (function(){
             dueDate: new Date(2024,6,1), 
             priority: "low",
             project: "#projects",
-            notes: false,
-            checkList: false,
             checked: false,
             id: 2
         },
@@ -46,8 +40,6 @@ const localStore = (function(){
             dueDate: new Date(2024,7,20), 
             priority: "high",
             project: "#projects",
-            notes: false,
-            checkList: false,
             checked: false,
             id: 3
         },
@@ -57,8 +49,6 @@ const localStore = (function(){
             dueDate: new Date(), 
             priority: "high",
             project: "#projects",
-            notes: false,
-            checkList: false,
             checked: true,
             id: 4
         },

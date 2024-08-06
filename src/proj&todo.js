@@ -42,9 +42,9 @@ const toDo = (function(){
         localStorage.setItem('id', id.toString());
     };
 
-    const create = (title,desc,dueDate,priority,project,notes,checkList,checked)=>{
+    const create = (title,desc,dueDate,priority,project,checked)=>{
 
-        let toDo = {title,desc,dueDate,priority,project,notes,checkList,checked,id};
+        let toDo = {title,desc,dueDate,priority,project,checked,id};
         toDoList.push(toDo);
         id++; 
         saveToDoList();        

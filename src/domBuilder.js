@@ -207,16 +207,6 @@ const domBuilder = (function(){
             })
             buttonContainer.appendChild(projectButton);
 
-            const notesButton = document.createElement('button');
-            notesButton.value = task.id;
-            notesButton.textContent='Notes+';
-            buttonContainer.appendChild(notesButton);
-
-            const checkListButton = document.createElement('button');
-            checkListButton.value = task.id;
-            checkListButton.textContent='Checklist+';
-            buttonContainer.appendChild(checkListButton);
-
             const deleteButton = document.createElement('button');
             deleteButton.value = task.id;
             deleteButton.textContent='Delete';
@@ -283,6 +273,7 @@ const domBuilder = (function(){
         }
 
     }
+
     return{projectDOM,taskDOM,taskDialogProjects,taskDOMPageSwitcher,deleteRemover,projectPageDOM}   
 
 })();
